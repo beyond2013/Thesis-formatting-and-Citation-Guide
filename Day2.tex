@@ -1,0 +1,220 @@
+\section{\LaTeX}
+Quoting Wikipedia \textbf{\quotes{\LaTeX is a document preparation system and document markup language. It is widely used for the communication and publication of scientific documents in many fields, including mathematics, physics, computer science, statistics, economics, and political science}}. \cite{warbrick94} is a short paper covering essentials of \LaTeX. We will start by examining small code segments required to produce pdf documents using ShareLatex. ShareLatex is a collaborative online editor.
+
+\begin{enumerate}
+\item Start by launching your browser and go to www.sharelatex.com. 
+\item Log In by supplying email and password if you have already registered, otherwise register first.
+\item Upon completion of registration you will see the button to create New Project, go ahead and click it, this will display a list of options choose blank project, give your project a name and click create
+\item ShareLatex will present you with a screen split into 3 columns, the left most displaying the only file in your project called main.tex, the middle one displaying some code that will be discussed, and the last one displaying the pdf document with a Recompile button at the top.
+\end{enumerate}
+\subsection{Latex Syntax}
+As is obvious from the code most latex commands start with the \textbackslash. Most of the latex commands are english like and quite easy to comprehend at the first glance, e.g. \textbackslash title, \textbackslash author, \textbackslash date. 
+LaTeX commands are case sensitive, and take one of the following two formats:
+\begin{itemize}
+\item start with a backslash  and then have a name consisting of letters only
+\item consist of a backslash \ and exactly one non-letter.
+\end{itemize}
+Some commands need an argument, which has to be given between curly braces \{ \} after the command name. Some commands support optional parameters, which are added after the command name in square brackets {[} {]}. \\ 
+The general syntax is:
+\begin{lstlisting}
+\commandname[option1,option2,...]{argument1}{argument2}...
+\end{lstlisting}
+
+
+Also note that for every command starting with \emph{\textbf{\textbackslash begin\{\}}} there is a matching \emph{\textbf{\textbackslash end\{\}}} e.g. \emph{\textbf{\textbackslash begin\{document\}}}, and \emph{\textbf{\textbackslash end\{document\}}}
+
+\subsection{Document Class}
+This section is an excerpt from \cite{warbrick94}.
+Four standard document classes are available in \LaTeX:
+\begin{description}
+\item[article] intended for short documents and articles for publication. Articles do not have chapters,
+and when \textbackslash maketitle is used to generate a title , the title appears at
+the top of the first page rather than on a page of its own.
+\item[report] intended for longer technical documents. It is similar to article, except that it contains
+chapters and the title appears on a page of its own.
+\item[book] intended as a basis for book publication. Page layout is adjusted assuming that the output
+will eventually be used to print on both sides of the paper.
+\item[letter] intended for producing personal letters. This style will allow you to produce all the elements of a well laid out letter: addresses, date, signature, etc..
+\end{description}
+
+These standard styles can be modified by a number of options. They appear in square brackets after the \textbackslash documentclass command. Only one class can be used in a document but you can have more than one option, in which case their names should be separated by commas. The standard options are:
+\begin{description}
+\item[11pt] prints the document using eleven-point type for the running text rather that the ten-point
+type normally used. Eleven-point type is about ten percent larger than ten-point.
+\item [12pt] prints the document using twelve-point type for the running text rather than the ten-point
+type normally used. Twelve-point type is about twenty percent larger than ten-point.
+\item[twoside] causes documents in the article or report styles to be formatted for printing on both
+sides of the paper. This is the default for the book style.
+\item [twocolumn] produces two columns of text on each page.
+\item [titlepage] causes the \textbackslash maketitle command to generate a title on a separate page for documents
+in the article style. A separate page is always used in both the report and
+\end{description}
+
+\section{Latex Environments}
+A variety of text effects can be obtained by putting text in various environments. General syntax of the environment is:
+\textbackslash begin\{environmentname\} text in between  \textbackslash end\{environmentname\}
+\begin{table}[h]
+\centering
+\begin{tabular}{c c}
+ Name & Description  \\ \hline
+ center & Aligns the text in center \\
+ itemize & produces an unordered list \\ 
+ enumerate & produces an ordered list \\
+ 
+ \end{tabular}
+\caption{Latex Environments}
+\label{tab:environment}
+\end{table}
+Some examples of these environments can be seen below:
+\begin{lstlisting}
+ \begin{center}
+   A text paragraph that you want to center align.
+ \end{center}
+\end{lstlisting}
+
+\begin{lstlisting}
+   \begin{itemize}
+      \item item one
+      \item item two
+   \end{itemize}
+\end{lstlisting}
+
+\begin{lstlisting}
+  \begin{enumerate}
+    \item numbered list item one
+    \item numbered list item two
+  \end{enumerate}
+\end{lstlisting}
+
+\section{Sectioning Commands}
+Longer documents can be divided into sections. Each section has a heading containing a title and a number for easy reference. \LaTeX has a series of commands for creating different sorts of sections.  \LaTeX automatically numbers and layout section headings.
+The commands  are:
+\begin{table}[h]
+\centering
+\begin{tabular}{c|c}
+ Command & Description  \\ \hline
+ \textbackslash chapter\{ChapterTitle\} & Not available in article style \\
+ \textbackslash section\{SectionTitle\} & for creating heading level1 \\
+ \textbackslash subsection\{SubSectionTitle\} & for creating heading level2 \\
+ \textbackslash subsubsection\{SubSubSectionTitle\} & for creating heading level3 \\
+ \textbackslash paragraph\{paragraph\} & a regular paragraph, not numbered, optional  \\
+ \textbackslash subparagraph\{subparagraph\} & subparagraph, not numbered  \\
+\end{tabular}
+\caption{Sectioning Commands}
+\label{tab:section}
+\end{table}
+\section{Tables}
+Bellow is an example of a table in \LaTeX. A comprehensive documentation on this topic can be accessed on Latex Wiki
+ \footnote{http://en.wikibooks.org/wiki/LaTeX/Tables}.
+
+\begin{lstlisting}
+\begin{table}[placement specifier]
+    \centering
+    \begin{tabular}{arguments }
+      TableHeading1     & TableHeadingTwo \\
+        entry 1 & entry 2 \\
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+\end{lstlisting}
+
+The placement specifier argument can take these values
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|p{6cm}|} \hline
+Specifier	& Permission \\ \hline
+h	 & Place the float here, i.e., approximately at the same point it  occurs in the source text (however, not exactly at the spot)\\ \hline
+t &	Position at the top of the page. \\ \hline
+b &	Position at the bottom of the page. \\ \hline
+p &	Put on a special page for floats only. \\ \hline
+! &	Override internal parameters LaTeX uses for determining "good" float positions.\\ \hline
+H &	Places the float at precisely the location in the LaTeX code. Requires the float package \\ \hline
+\end{tabular}
+\caption{Placement specifiers}
+\label{tab:placspec}
+\end{table}
+The  arguments in the tabular environment tell LaTeX the alignment to be used in each column and the vertical lines to insert.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|p{6cm}|} \hline
+ argument & description \\ \hline
+ l &	left-justified column \\ \hline
+c &	centered column \\ \hline
+r &	right-justified column \\ \hline
+p\{'width'\} &	paragraph column with text vertically aligned at the top\\ \hline
+m\{'width'\}	 & paragraph column with text vertically aligned in  the middle (requires array package) \\ \hline
+b\{'width'\} &	paragraph column with text vertically aligned at the bottom (requires array package) \\ \hline
+$|$ &	vertical line \\ \hline
+$||$ &	double vertical line \\ \hline
+\end{tabular}
+\caption{Arguments for tabular environment}
+\label{tab:argumenttable}
+\end{table}
+
+\section{Figures}
+Following is an example for including a figure in latex. Placement specifiers for figure are the same as for tables \ref{tab:placspec}.
+For details please see \footnote{\url{http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}}
+\begin{lstlisting}
+    \begin{figure}[placement specifiers]
+        \centering
+        \includegraphics{path/to/the/figure}
+        \caption{Caption}
+        \label{fig:my_label}
+    \end{figure}
+\end{lstlisting}
+
+\section{Equations}
+Following is an example for typesetting equation. For a comprehensive description can be accessed on Latex Wiki \footnote{\url{http://en.wikibooks.org/wiki/LaTeX/Mathematics}}
+
+\begin{lstlisting}
+\begin{equation}
+    \frac{n!}{k!(n-k)!} = {n \choose k}
+ \label{eqn:frac}
+\end{lstlisting}
+Output of the example code
+\begin{equation}
+ \frac{n!}{k!(n-k)!} = {n \choose k}
+ \label{eqn:frac}
+\end{equation}
+
+\section{Cross Referencing}
+The \textbackslash ref\{label\} command can be used to cross reference tables, figures, equations, and sections. Each item to be cross referenced must have \textbackslash label{key}. The key can be any string, its a good practice to prefix the key of each item to provide hint e.g. for the label of table prefix the label with tbl, for figure use fig, and equations eqn.
+
+\section{List of tables/figures and table of contents}
+Generating list of tables/figures/equations and table of contents is very easy, just include the following commands after the begin document command
+\textbackslash tableofcontents for creating table of contents
+\textbackslash listoffigures for creating  list of figures
+\textbackslash listoftables for creating  list of tables
+
+\section{Citation and Bibliography}
+First create a new file, give it any name e.g. reference, the extension of the file should be bib. Now we can copy bibtex entries into reference.bib. For including Bibliography in your file include following two commands just before \textbackslash end\{document\}:
+\begin{lstlisting}
+  \bibliographystyle{plain}
+  \bibliography{reference}
+\end{lstlisting}
+The first line tells latex what bibliography style to use, in this case \mystyle{plain} is mentioned, and the second line tells latex the name of the bibliography file \mystyle{reference}. For citing the reference you have copied in reference.bib use this command \textbackslash cite\{citekey\}, where citekey is the key e.g. if you have the following entry in your reference.bib file:
+\begin{lstlisting}
+ @article{aflalo2015convex,
+  title={On convex relaxation of graph isomorphism},
+  author={Aflalo, Yonathan and Bronstein, Alexander and Kimmel, Ron},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={112},
+  number={10},
+  pages={2942--2947},
+  year={2015},
+  publisher={National Acad Sciences}
+}
+\end{lstlisting}
+then \mystyle{aflalo2015convex} is the key and you should use \mystyle{\textbackslash cite\{aflalo2015convex\}} to cite this article.
+For details on citation and bibliography please see the Latex Wiki \footnote{\url{http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}}
+
+\begin{thebibliography}{9}
+\bibitem{warbrick94}
+ Warbrick Jon,
+ \emph{Essential \LaTeX+},
+ 1994.
+
+\end{thebibliography}

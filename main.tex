@@ -1,0 +1,31 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{amsmath}
+
+\newcommand{\quotes}[1]{``#1''}
+\newcommand{\mystyle}[1]{\textbf{\emph{#1}}}
+
+\title{Thesis formatting and citation WorkShop Handout}
+\author{Imran Ali}
+
+\begin{document}
+
+\maketitle
+\renewcommand\contentsname{Table of Contents} % this changes the heading of toc
+\setcounter{tocdepth}{2} % changing the depth of toc, 0 not for article
+\tableofcontents 
+\addtocontents{toc}{~\hfill\textbf{Page}\par} % puts "Page on top of Page number"
+
+\renewcommand\listfigurename{LIST OF FIGURES} % this changes the heading of list of figures
+\listoffigures 
+\addtocontents{lof}{~\hfill\textbf{Page}\par}
+\renewcommand\listtablename{LIST OF TABLES} % this changes the heading of list of tables
+\listoftables 
+\addtocontents{lot}{~\hfill\textbf{Page}\par}
+ \include{Day1}
+ \include{Day2}
+\end{document}
